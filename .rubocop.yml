@@ -1,8 +1,83 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+# inherit_gem:
+#   # Omakase Ruby styling for Rails https://github.com/rails/rubocop-rails-omakase/
+#   rubocop-rails-omakase: rubocop.yml
+
+plugins:
+  - rubocop-faker
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-thread_safety
 
 # Overwrite or add rules to create your own house style
 #
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  Exclude:
+    - tmp/**/*
+    - vendor/**/*
+    - node_modules/**/*
+    - doc/**/*
+    - project-files/**/*
+    - .trunk/**/*
+    - .ruby-lsp/**/*
+  ExtraDetails: true
+  NewCops: enable
+  TargetRubyVersion: 3.4
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Layout/LineLength:
+  AllowHeredoc: true
+  AllowURI: true
+  # The IgnoredPatterns option is a list of !ruby/regexp and/or string
+  # elements. Strings will be converted to Regexp objects. A line that matches
+  # any regular expression listed in this option will be ignored by LineLength.
+  AllowedPatterns: []
+  # The IgnoreCopDirectives option causes the LineLength rule to ignore cop
+  # directives like '# rubocop: enable ...' when calculating a line's length.
+  IgnoreCopDirectives: false
+  Max: 100
+  URISchemes:
+    - http
+    - https
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+
+Metrics/BlockLength:
+  AllowedMethods:
+    - group
+Metrics/ClassLength:
+  CountAsOne: [array, heredoc]
+Metrics/MethodLength:
+  AllowedMethods: []
+  CountAsOne: [array, heredoc]
+  Max: 12
+Metrics/ModuleLength:
+  CountAsOne: [array, heredoc]
+
+Rails:
+  Enabled: true
+Rails/TimeZone:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+Style/ExponentialNotation:
+  Enabled: true
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
