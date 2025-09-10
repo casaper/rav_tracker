@@ -12,6 +12,7 @@ gem 'kamal', require: false
 gem 'pg'
 gem 'propshaft' # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'puma' # Use the Puma web server [https://github.com/puma/puma]
+gem 'rails-settings-cached'
 gem 'solid_cable'
 gem 'solid_cache'
 gem 'solid_queue'
@@ -22,8 +23,10 @@ gem 'thruster', require: false
 
 group :development, :test do
   gem 'brakeman', require: false
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rbs_rails', require: false
+  gem 'rspec-rails'
   gem 'rubocop-capybara', require: false
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-faker', require: false
@@ -35,6 +38,8 @@ group :development, :test do
   gem 'rubocop-rspec', require: false
   gem 'rubocop-rspec_rails', require: false
   gem 'rubocop-thread_safety', require: false
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   # gem "rubocop-rails-omakase", require: false
 end
