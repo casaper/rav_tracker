@@ -1,0 +1,17 @@
+= form_for @job_link do |f|
+  - if @job_link.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@job_link.errors.count, 'error')} prohibited this job_link from being saved:"
+      %ul
+        - @job_link.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :title
+    = f.text_field :title
+    
+  .actions
+    = f.submit 'Save'

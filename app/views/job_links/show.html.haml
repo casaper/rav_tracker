@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Url:
+  = @job_link.url
+%p
+  %b Raw html:
+  = @job_link.raw_html
+%p
+  %b Title:
+  = @job_link.title
+%p
+  %b Description:
+  = @job_link.description
+%p
+  %b Content md:
+  = @job_link.content_md
+%p
+  %b Job offer:
+  = @job_link.job_offer
+
+= link_to 'Edit', edit_job_link_path(@job_link)
+\|
+= link_to 'Back', job_links_path

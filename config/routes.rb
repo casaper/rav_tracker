@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :job_offers
+  resources :job_offers do
+    resources :job_links
+  end
   resources :companies
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
