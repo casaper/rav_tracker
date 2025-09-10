@@ -1,0 +1,29 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @company.name
+%p
+  %b Address:
+  = @company.address
+%p
+  %b Website:
+  - if @company.website.present?
+    = link_to @company.website, @company.website, target: '_blank', rel: 'noopener'
+%p
+  %b Phone:
+  - if @company.phone.present?
+    = link_to @company.phone, @company.phone_href
+%p
+  %b Email:
+  - if @company.email.present?
+    = mail_to @company.email
+
+.richt-text-wrap
+  %b Notes:
+  .rich-text-content
+    = @company.notes
+
+= link_to 'Edit', edit_company_path(@company)
+\|
+= link_to 'Back', companies_path

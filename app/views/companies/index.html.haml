@@ -1,0 +1,29 @@
+%h1 Listing companies
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Website
+      %th Phone
+      %th
+      %th
+      %th
+
+  %tbody
+    - @companies.each do |company|
+      %tr
+        %td= company.name
+        %td
+          - if company.website.present?
+            = link_to company.website, company.website, target: '_blank', rel: 'noopener'
+        %td
+          - if company.phone.present?
+            = link_to company.phone, company.phone_href
+        %td= link_to 'Show', company
+        %td= link_to 'Edit', edit_company_path(company)
+        %td= link_to 'Destroy', company, method: :delete, data: { confirm: t('are_you_sure') }
+
+%br
+
+= link_to 'New Company', new_company_path
