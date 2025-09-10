@@ -1,0 +1,25 @@
+%h1 Listing job_offers
+
+%table
+  %thead
+    %tr
+      %th Company
+      %th Title
+      %th State
+      %th
+      %th
+      %th
+
+  %tbody
+    - @job_offers.each do |job_offer|
+      %tr
+        %td= job_offer.company
+        %td= job_offer.title
+        %td= job_offer.state
+        %td= link_to 'Show', job_offer
+        %td= link_to 'Edit', edit_job_offer_path(job_offer)
+        %td= link_to 'Destroy', job_offer, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Job offer', new_job_offer_path

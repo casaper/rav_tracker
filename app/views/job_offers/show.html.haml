@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+  %b Company:
+  = @job_offer.company
+%p
+  %b Title:
+  = @job_offer.title
+%p
+  %b State:
+  = @job_offer.state
+
+.richt-text-wrap
+  %b Job Description:
+  .rich-text-content
+    = @job_offer.description
+
+.richt-text-wrap
+  %b Notes:
+  .rich-text-content
+    = @job_offer.notes
+
+= link_to 'Edit', edit_job_offer_path(@job_offer)
+\|
+= link_to 'Back', job_offers_path

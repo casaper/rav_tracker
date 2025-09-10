@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_10_131005) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_10_135623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -72,6 +72,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_10_131005) do
     t.index ["name"], name: "index_companies_on_name", unique: true
   end
 
+  create_table "job_offers", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "title", default: "fill me", null: false
+    t.string "state", default: "opened", null: false
+    t.datetime "opened_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "applied_at"
+    t.datetime "interviewed_at"
+    t.datetime "rejected_at"
+    t.datetime "pending_at"
+    t.datetime "accepted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_job_offers_on_company_id"
+    t.index ["state"], name: "index_job_offers_on_state"
+  end
+
   create_table "settings", force: :cascade do |t|
     t.string "var", null: false
     t.text "value"
@@ -82,4 +98,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_10_131005) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "job_offers", "companies"
 end

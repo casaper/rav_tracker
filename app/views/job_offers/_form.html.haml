@@ -1,0 +1,48 @@
+= form_for @job_offer do |f|
+  - if @job_offer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@job_offer.errors.count, 'error')} prohibited this job_offer from being saved:"
+      %ul
+        - @job_offer.errors.full_messages.each do |message|
+          %li= message
+
+
+  .field
+    = f.label :company
+    = f.collection_select :company_id, Company.all, :id, :name, include_blank: true
+    - if f.object.new_record?
+      %p Create a new company below or pick an existing one from above.
+  - if f.object.new_record?
+    %fieldset
+      %legend Create a new company
+      = f.fields_for :company do |cf|
+        .field
+          = cf.label :name
+          = cf.text_field :name
+        .field
+          = cf.label :address
+          = cf.textarea :address
+        .field
+          = cf.label :website
+          = cf.text_field :website
+        .field
+          = cf.label :phone
+          = cf.text_field :phone
+        .field
+          = cf.label :email
+          = cf.text_field :email
+      
+  .field
+    = f.label :title
+    = f.text_field :title
+
+  .field
+    = f.label :description
+    = f.rich_text_area :description
+
+  .field
+    = f.label :notes
+    = f.rich_text_area :notes
+
+  .actions
+    = f.submit 'Save'

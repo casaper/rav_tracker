@@ -21,8 +21,8 @@ module RavTrack
       g.template_engine :haml
 
       g.helper false
-      g.stylesheets false
-      g.javascripts false
+      # g.stylesheets false
+      # g.javascripts false
 
       ## For specs
       g.fixtures false

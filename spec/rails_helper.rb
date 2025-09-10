@@ -4,7 +4,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 
-# rubocop:disable I18n/GetText/DecorateString,I18n/RailsI18n/DecorateString
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 # rubocop:enable I18n/GetText/DecorateString,I18n/RailsI18n/DecorateString
 
