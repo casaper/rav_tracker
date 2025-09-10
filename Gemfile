@@ -4,6 +4,7 @@ gem 'rails', '~> 8.0.0'
 
 gem 'bcrypt'
 gem 'bootsnap', require: false
+gem 'haml-rails'
 gem 'image_processing'
 gem 'importmap-rails' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'jbuilder'
@@ -15,9 +16,9 @@ gem 'solid_cable'
 gem 'solid_cache'
 gem 'solid_queue'
 gem 'stimulus-rails' # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem 'turbo-rails' # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem 'thruster', require: false
-gem 'turbo-rails' # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 
 group :development, :test do
   gem 'brakeman', require: false
@@ -26,6 +27,7 @@ group :development, :test do
   gem 'rubocop-capybara', require: false
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-faker', require: false
+  gem 'rubocop-haml', require: false
   gem 'rubocop-i18n', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
@@ -38,6 +40,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'html2haml', require: false
   gem 'irbtools'
   gem 'web-console'
 end

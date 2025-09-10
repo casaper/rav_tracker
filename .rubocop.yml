@@ -5,6 +5,7 @@
 plugins:
   - rubocop-capybara
   - rubocop-factory_bot
+  - rubocop-haml
   - rubocop-i18n
   - rubocop-performance
   - rubocop-rails
@@ -27,6 +28,7 @@ AllCops:
     - .gem_rbs_collection/**/*
     - .ruby-lsp/**/*
     - .trunk/**/*
+    - db/schema.rb
     - doc/**/*
     - node_modules/**/*
     - project-files/**/*
@@ -83,7 +85,8 @@ Layout/EmptyLinesAroundAttributeAccessor:
 Layout/LineLength:
   AllowHeredoc: true
   AllowURI: true
-  AllowedPatterns: []
+  AllowedPatterns:
+    - !ruby/regexp '/\A\s*#.*\z/'
   IgnoreCopDirectives: false
   Max: 100
   URISchemes:
@@ -143,7 +146,6 @@ Rails:
   Enabled: true
 Rails/CreateTableWithTimestamps:
   Exclude:
-    - db/schema.rb
     - db/migrate/*active_storage*.rb
 
 ## RSpec
