@@ -285,6 +285,11 @@ GEM
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
+    pry (0.15.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-rails (0.3.11)
+      pry (>= 0.13.0)
     psych (5.2.6)
       date
       stringio
@@ -528,6 +533,7 @@ DEPENDENCIES
   kamal
   pg
   propshaft
+  pry-rails
   puma
   rails (~> 8.0.0)
   rails-settings-cached

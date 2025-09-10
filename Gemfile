@@ -25,6 +25,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry-rails'
   gem 'rbs_rails', require: false
   gem 'rspec-rails'
   gem 'rubocop-capybara', require: false

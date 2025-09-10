@@ -141,6 +141,14 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: diff-lcs
+  version: '1.5'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 1c0e3f62ff100436becf905ec3ae30a691019384
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: digest
   version: '0'
   source:
@@ -149,6 +157,14 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: faker
+  version: 3.4.2
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 1c0e3f62ff100436becf905ec3ae30a691019384
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: ffi
   version: 1.17.2
   source:
@@ -249,6 +265,10 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: optparse
+  version: '0'
+  source:
+    type: stdlib
 - name: pathname
   version: '0'
   source:
@@ -313,6 +333,10 @@ gems:
     revision: 1c0e3f62ff100436becf905ec3ae30a691019384
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: ripper
+  version: '0'
+  source:
+    type: stdlib
 - name: rubyzip
   version: '2.3'
   source:
@@ -377,4 +401,12 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: yard
+  version: '0.9'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 1c0e3f62ff100436becf905ec3ae30a691019384
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 gemfile_lock_path: Gemfile.lock
