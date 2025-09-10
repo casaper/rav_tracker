@@ -3,28 +3,81 @@
 #   rubocop-rails-omakase: rubocop.yml
 
 plugins:
-  - rubocop-faker
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-i18n
   - rubocop-performance
   - rubocop-rails
   - rubocop-rake
   - rubocop-rspec
+  - rubocop-rspec_rails
   - rubocop-thread_safety
 
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
-  Exclude:
-    - tmp/**/*
-    - vendor/**/*
-    - node_modules/**/*
-    - doc/**/*
-    - project-files/**/*
-    - .trunk/**/*
-    - .ruby-lsp/**/*
   ExtraDetails: true
   NewCops: enable
+  ParserEngine: parser_prism
+  SuggestExtensions: true
   TargetRubyVersion: 3.4
+  UseCache: true
+  Exclude:
+    - .envrc-scripts/**/*
+    - .gem_rbs_collection/**/*
+    - .ruby-lsp/**/*
+    - .trunk/**/*
+    - doc/**/*
+    - node_modules/**/*
+    - project-files/**/*
+    - tmp/**/*
+    - vendor/**/*
 
+## Layout
+Layout/BeginEndAlignment:
+  EnforcedStyleAlignWith: begin
+Layout/BlockAlignment:
+  EnforcedStyleAlignWith: start_of_block
+Layout/ClassStructure:
+  Categories:
+    association:
+      - belongs_to
+      - has_one
+      - has_many
+      - accepts_nested_attributes_for
+      - has_one_attached
+      - has_many_attached
+      - has_rich_text
+    attribute_macros:
+      - attr_reader
+      - attr_writer
+      - attr_accessor
+    macros:
+      - validates
+      - validate
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+  ExpectedOrder:
+    - module_inclusion
+    - constants
+    - association
+    - public_attribute_macros
+    - public_delegate
+    - macros
+    - public_class_methods
+    - initializer
+    - public_methods
+    - protected_attribute_macros
+    - protected_methods
+    - private_attribute_macros
+    - private_delegate
+    - private_methods
+Layout/CommentIndentation:
+  AllowForAlignment: true
+Layout/DefEndAlignment:
+  EnforcedStyleAlignWith: def
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
 Layout/LineLength:
@@ -39,29 +92,82 @@ Layout/LineLength:
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 
+## Lint
+Lint/EmptyClass:
+  AllowComments: true
 Lint/RaiseException:
   Enabled: true
 Lint/StructNewOverride:
   Enabled: true
 
+## Metrics
+Metrics/AbcSize:
+  AllowedMethods:
+    - change
+  AllowedPatterns: []
+  CountRepeatedAttributes: false
 Metrics/BlockLength:
   AllowedMethods:
-    - group
     - define
+    - draw
+    - generators
+    - group
+  AllowedPatterns: []
+  CountAsOne: [array, hash, heredoc, method_call]
+  CountComments: false
 Metrics/ClassLength:
-  CountAsOne: [array, heredoc]
-Metrics/MethodLength:
+  CountAsOne: [array, hash, heredoc, method_call]
+  CountComments: false
+Metrics/CyclomaticComplexity:
   AllowedMethods: []
-  CountAsOne: [array, heredoc]
+  AllowedPatterns: []
+Metrics/MethodLength:
+  AllowedMethods:
+    - change
+  AllowedPatterns: []
+  CountAsOne: [array, hash, heredoc, method_call]
+  CountComments: false
   Max: 12
 Metrics/ModuleLength:
-  CountAsOne: [array, heredoc]
+  CountAsOne: [array, hash, heredoc, method_call]
+  CountComments: false
+Metrics/ParameterLists:
+  Max: 7
+  MaxOptionalParameters: 4
+Metrics/PerceivedComplexity:
+  AllowedMethods: []
+  AllowedPatterns: []
 
+## Rails    
 Rails:
   Enabled: true
-Rails/TimeZone:
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*active_storage*.rb
+
+## RSpec
+RSpec/DescribeClass:
+  Enabled: false
+RSpec/ExampleLength:
+  CountAsOne: [array, hash, heredoc, method_call]
+  Max: 15
+RSpec/ImplicitExpect:
+  Enabled: false
+RSpec/IndexedLet:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Max: 5
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+RSpec/NamedSubject:
+  Enabled: false
+RSpec/NestedGroups:
+  Max: 4
+RSpec/ScatteredSetup:
   Enabled: false
 
+## Style
 Style/Documentation:
   Enabled: false
 Style/ExponentialNotation:
@@ -72,3 +178,13 @@ Style/HashEachMethods:
   Enabled: true
 Style/HashTransformKeys:
   Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+Style/SlicingWithRange:
+  Enabled: true
+Style/SuperArguments:
+  Enabled: false
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
