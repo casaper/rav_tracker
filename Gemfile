@@ -5,6 +5,8 @@ gem 'rails', '~> 8.0.0'
 gem 'aasm'
 gem 'bcrypt'
 gem 'bootsnap', require: false
+gem 'cssbundling-rails'
+gem 'foreman'
 gem 'haml-rails'
 gem 'image_processing'
 gem 'importmap-rails' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]

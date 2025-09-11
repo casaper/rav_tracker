@@ -108,6 +108,8 @@ GEM
     core_docs (0.9.11)
       yard (~> 0.9.11)
     crass (1.0.6)
+    cssbundling-rails (1.4.3)
+      railties (>= 6.0.0)
     date (3.4.1)
     debug (1.11.0)
       irb (~> 1.10)
@@ -143,6 +145,8 @@ GEM
     ffi (1.17.2-arm64-darwin)
     ffi (1.17.2-x86_64-linux-gnu)
     ffi (1.17.2-x86_64-linux-musl)
+    foreman (0.90.0)
+      thor (~> 1.4)
     fugit (1.11.2)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -524,9 +528,11 @@ DEPENDENCIES
   bootsnap
   brakeman
   capybara
+  cssbundling-rails
   debug
   factory_bot_rails
   faker
+  foreman
   haml-rails
   html2haml
   image_processing
