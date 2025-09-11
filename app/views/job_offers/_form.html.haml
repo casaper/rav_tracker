@@ -1,4 +1,5 @@
-= form_for @job_offer do |f|
+
+= form_for @job_offer, html: { class: 'max-w-lg' } do |f|
   - if @job_offer.errors.any?
     #error_explanation
       %h2= "#{pluralize(@job_offer.errors.count, 'error')} prohibited this job_offer from being saved:"
@@ -7,9 +8,11 @@
           %li= message
 
 
-  .field
-    = f.label :company
-    = f.collection_select :company_id, Company.all, :id, :name, include_blank: true
+  .mb-5
+    = f.label :company, 'Company', class: 'block mb-2 text-sm font-medium text-gray-950'
+    = f.collection_select :company_id, Company.all, :id, :name, 
+                          include_blank: true,
+                          class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
     - if f.object.new_record?
       %p Create a new company below or pick an existing one from above.
   - if f.object.new_record?
@@ -32,9 +35,9 @@
           = cf.label :email
           = cf.text_field :email
       
-  .field
-    = f.label :title
-    = f.text_field :title
+  .mb-5
+    = f.label :title, class: 'block mb-2 text-sm font-medium'
+    = f.text_field :title, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
 
   .field
     = f.label :description
@@ -44,5 +47,6 @@
     = f.label :notes
     = f.rich_text_area :notes
 
-  .actions
-    = f.submit 'Save'
+  .mt-4.flex
+    = link_to 'Back', job_offers_path, class: 'bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded'
+    = f.submit @job_offer.new_record? ? 'Create' : 'Update', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
